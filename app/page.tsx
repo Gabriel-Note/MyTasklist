@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import React from "react";
-import { getTasksByList } from "./api/api_calls";
+import { getTasksByListName } from "./api/api_calls";
 
 export default function Home() {
 
-  const handeleGetTask = async () => {
-    const data = await getTasksByList(17);
+  const handleGetTask = async () => {
+    const data = await getTasksByListName(17);
     console.log(data);
   };
 
@@ -46,7 +46,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <button
-            onClick={handeleGetTask}
+            onClick={handleGetTask}
             className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
             rel="noopener noreferrer"
           >

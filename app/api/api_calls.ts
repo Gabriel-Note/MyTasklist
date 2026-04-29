@@ -69,7 +69,7 @@ export async function changeCompleted(todo: Task) {
   });
 }
 
-export async function getCategories() {
+export async function getListNames() {
   try {
     const response = await fetch("http://localhost:8080/tasklists");
     if (!response.ok) {
@@ -82,7 +82,7 @@ export async function getCategories() {
   }
 }
 
-export async function createCategory(name: string) {
+export async function createListName(name: string) {
   try {
     const response = await fetch("http://localhost:8080/tasklists", {
       method: "POST",
@@ -102,13 +102,13 @@ export async function createCategory(name: string) {
   }
 }
 
-export async function deleteCategory(id: number) {
+export async function deleteListName(id: number) {
   try {
     const response = await fetch(`http://localhost:8080/tasklists/${id}`, {
       method: "DELETE"
     });
     if (!response.ok) {
-      throw new Error("Failed to delete category");
+      throw new Error("Failed to delete list name");
     }
   } catch (error) {
     console.error("Error:", error);
@@ -116,11 +116,11 @@ export async function deleteCategory(id: number) {
   }
 }
 
-export async function getTasksByCategory(listId: number) {
+export async function getTasksByListName(listId: number) {
   try {
     const response = await fetch(`http://localhost:8080/tasklists/${listId}/tasks`);
     if (!response.ok) {
-      throw new Error("Failed to fetch tasks for category");
+      throw new Error("Failed to fetch tasks for list name");
     }
     return response.json();
   } catch (error) {
