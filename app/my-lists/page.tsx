@@ -1,6 +1,6 @@
 import { useState } from "react";
 import TodoClient from "../todo/TodoClient";
-import Categories, { type Category } from "../components/category";
+import ListNameSidebar, { ListName } from "../components/ListName";
 
 
 export const metadata = {
@@ -8,22 +8,22 @@ export const metadata = {
 };
 
 export default function MyListsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
+  const [selectedListName, setSelectedListName] = useState<ListName | null>(null);
 
   return (
     <div className="flex flex-row gap-4 p-6">
       <div className="flex-[0.25]">
       
         {/* LEFT SIDE */}
-        <Categories
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
+        <ListNameSidebar
+          selectedListName={selectedListName}
+          setSelectedListName={setSelectedListName}
         />
       </div>
       <div className="flex-1">
 
         {/* RIGHT SIDE - under construction*/}
-        <TodoClient selectedCategory={selectedCategory} />
+        <TodoClient selectedListName={selectedListName} />
 
       </div>
     </div>

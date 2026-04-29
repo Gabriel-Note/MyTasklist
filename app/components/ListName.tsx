@@ -2,53 +2,53 @@
 
 import { useEffect, useState } from "react";
 import {
-  getCategories,
-  createCategory,
-  deleteCategory,
+  getListNames,
+  createListName,
+  deleteListName,
 } from "../api/api_calls";
 
-interface Category {
+interface ListName {
   id: number;
   name: string;
 }
 
 interface Props {
-  selectedCategory: Category | null;
-  setSelectedCategory: (category: Category | null) => void;
+  selectedListName: ListName | null;
+  setSelectedListName: (ListName: ListName | null) => void;
 }
 
-export { type Category };
+export { type ListName };
 
-export default function CategoriesSidebar({ selectedCategory, setSelectedCategory }: Props) {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [newCategoryName, setNewCategoryName] = useState("");
+export default function ListNameSidebar({ selectedListName, setSelectedListName }: Props) {
+  const [ListName, setListName] = useState<ListName[]>([]);
+  const [newListName, setNewListName] = useState("");
 
-  async function fetchCategories(selectLatest = false) {
-    const data = await getCategories();
-    const cats = Array.isArray(data) ? data : [];
+  async function fetchListNames(selectLatest = false) {
+    const data = await getListNames();
+    const lists = Array.isArray(data) ? data : [];
 
-    setCategories(cats);
+    setListName(lists);
 
-    if (cats.length > 0 && (!selectedCategory || selectLatest)) {
-      setSelectedCategory(selectLatest ? cats[cats.length - 1] : cats[0]);
+    if (lists.length > 0 && (!selectedListName || selectLatest)) {
+      setSelectedListName(selectLatest ? lists[lists.length - 1] : lists[0]);
     }
   }
 
   useEffect(() => {
-    fetchCategories();
+    fetchListNames();
   }, []);
 
   const handleCreateCategory = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await createCategory(newCategoryName);
-    setNewCategoryName("");
-    fetchCategories(true);
+    await createListName(newListName);
+    setNewListName("");
+    fetchListNames(true);
   };
 
   const handleDeleteCategory = async (id: number) => {
-    await deleteCategory(id);
-    setSelectedCategory(null);
-    fetchCategories();
+    await deleteListName(id);
+    setSelectedListName(null);
+    fetchListNames();
   };
 
   return (
@@ -60,8 +60,8 @@ export default function CategoriesSidebar({ selectedCategory, setSelectedCategor
         <input
           type="text"
           placeholder="New category"
-          value={newCategoryName}
-          onChange={(e) => setNewCategoryName(e.target.value)}
+          value={newListName}
+          onChange={(e) => setNewListName(e.target.value)}
           required
           className="flex-1 px-2 py-1 border rounded text-black"
         />
@@ -72,21 +72,21 @@ export default function CategoriesSidebar({ selectedCategory, setSelectedCategor
 
       {/* Categories */}
       <div className="flex flex-col gap-2">
-        {categories.map((category) => (
-          <div key={category.id} className="flex gap-1">
+        {ListName.map((listName) => (
+          <div key={listName.id} className="flex gap-1">
             <button
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => setSelectedListName(listName)}
               className={`flex-1 px-2 py-1 rounded text-white ${
-                selectedCategory?.id === category.id
+                selectedListName?.id === listName.id
                   ? "bg-blue-800"
                   : "bg-blue-950"
               }`}
             >
-              {category.name}
+              {listName.name}
             </button>
 
             <button
-              onClick={() => handleDeleteCategory(category.id)}
+              onClick={() => handleDeleteCategory(listName.id)}
               className="bg-red-500 text-white px-2 rounded"
             >
               ✕
