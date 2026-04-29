@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import React from "react";
-import { getTasksByList } from "./api/api_calls";
+import { getTasksByCategory } from "./api/api_calls";
 
 export default function Home() {
 
   const handeleGetTask = async () => {
-    const data = await getTasksByList(17);
+    const data = await getTasksByCategory(17);
     console.log(data);
   };
 
