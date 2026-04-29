@@ -69,7 +69,7 @@ export async function changeCompleted(todo: Task) {
   });
 }
 
-export async function getTaskLists() {
+export async function getCategories() {
   try {
     const response = await fetch("http://localhost:8080/tasklists");
     if (!response.ok) {
@@ -82,7 +82,7 @@ export async function getTaskLists() {
   }
 }
 
-export async function createTaskList(name: string) {
+export async function createCategory(name: string) {
   try {
     const response = await fetch("http://localhost:8080/tasklists", {
       method: "POST",
@@ -102,13 +102,13 @@ export async function createTaskList(name: string) {
   }
 }
 
-export async function deleteTaskList(id: number) {
+export async function deleteCategory(id: number) {
   try {
     const response = await fetch(`http://localhost:8080/tasklists/${id}`, {
       method: "DELETE"
     });
     if (!response.ok) {
-      throw new Error("Failed to delete task list");
+      throw new Error("Failed to delete category");
     }
   } catch (error) {
     console.error("Error:", error);

@@ -5,7 +5,7 @@ import {
   getCategories,
   createCategory,
   deleteCategory,
-} from "../../api/api_calls";
+} from "../api/api_calls";
 
 interface Category {
   id: number;
