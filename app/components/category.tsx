@@ -2,64 +2,66 @@
 
 import { useEffect, useState } from "react";
 import {
-  getTaskLists,
-  createTaskList,
-  deleteTaskList,
+  getCategories,
+  createCategory,
+  deleteCategory,
 } from "../../api/api_calls";
 
-interface TaskList {
+interface Category {
   id: number;
   name: string;
 }
 
 interface Props {
-  selectedList: TaskList | null;
-  setSelectedList: (list: TaskList | null) => void;
+  selectedCategory: Category | null;
+  setSelectedCategory: (category: Category | null) => void;
 }
 
-export default function ListsSidebar({ selectedList, setSelectedList }: Props) {
-  const [taskLists, setTaskLists] = useState<TaskList[]>([]);
-  const [newListName, setNewListName] = useState("");
+export { type Category };
 
-  async function fetchTaskLists(selectLatest = false) {
-    const data = await getTaskLists();
-    const lists = Array.isArray(data) ? data : [];
+export default function CategoriesSidebar({ selectedCategory, setSelectedCategory }: Props) {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [newCategoryName, setNewCategoryName] = useState("");
 
-    setTaskLists(lists);
+  async function fetchCategories(selectLatest = false) {
+    const data = await getCategories();
+    const cats = Array.isArray(data) ? data : [];
 
-    if (lists.length > 0 && (!selectedList || selectLatest)) {
-      setSelectedList(selectLatest ? lists[lists.length - 1] : lists[0]);
+    setCategories(cats);
+
+    if (cats.length > 0 && (!selectedCategory || selectLatest)) {
+      setSelectedCategory(selectLatest ? cats[cats.length - 1] : cats[0]);
     }
   }
 
   useEffect(() => {
-    fetchTaskLists();
+    fetchCategories();
   }, []);
 
-  const handleCreateList = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleCreateCategory = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await createTaskList(newListName);
-    setNewListName("");
-    fetchTaskLists(true);
+    await createCategory(newCategoryName);
+    setNewCategoryName("");
+    fetchCategories(true);
   };
 
-  const handleDeleteList = async (id: number) => {
-    await deleteTaskList(id);
-    setSelectedList(null);
-    fetchTaskLists();
+  const handleDeleteCategory = async (id: number) => {
+    await deleteCategory(id);
+    setSelectedCategory(null);
+    fetchCategories();
   };
 
   return (
     <div className="w-75 bg-white border p-2 rounded-xl shadow">
-      <h2 className="text-xl font-bold mb-4 text-black">Lists</h2>
+      <h2 className="text-xl font-bold mb-4 text-black">Categories</h2>
 
-      {/* Create list */}
-      <form onSubmit={handleCreateList} className="mb-4 flex gap-2">
+      {/* Create category */}
+      <form onSubmit={handleCreateCategory} className="mb-4 flex gap-2">
         <input
           type="text"
-          placeholder="New list"
-          value={newListName}
-          onChange={(e) => setNewListName(e.target.value)}
+          placeholder="New category"
+          value={newCategoryName}
+          onChange={(e) => setNewCategoryName(e.target.value)}
           required
           className="flex-1 px-2 py-1 border rounded text-black"
         />
@@ -68,23 +70,23 @@ export default function ListsSidebar({ selectedList, setSelectedList }: Props) {
         </button>
       </form>
 
-      {/* Lists */}
+      {/* Categories */}
       <div className="flex flex-col gap-2">
-        {taskLists.map((list) => (
-          <div key={list.id} className="flex gap-1">
+        {categories.map((category) => (
+          <div key={category.id} className="flex gap-1">
             <button
-              onClick={() => setSelectedList(list)}
+              onClick={() => setSelectedCategory(category)}
               className={`flex-1 px-2 py-1 rounded text-white ${
-                selectedList?.id === list.id
+                selectedCategory?.id === category.id
                   ? "bg-blue-800"
                   : "bg-blue-950"
               }`}
             >
-              {list.name}
+              {category.name}
             </button>
 
             <button
-              onClick={() => handleDeleteList(list.id)}
+              onClick={() => handleDeleteCategory(category.id)}
               className="bg-red-500 text-white px-2 rounded"
             >
               ✕
