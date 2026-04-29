@@ -116,11 +116,11 @@ export async function deleteCategory(id: number) {
   }
 }
 
-export async function getTasksByList(listId: number) {
+export async function getTasksByCategory(listId: number) {
   try {
     const response = await fetch(`http://localhost:8080/tasklists/${listId}/tasks`);
     if (!response.ok) {
-      throw new Error("Failed to fetch tasks for list");
+      throw new Error("Failed to fetch tasks for category");
     }
     return response.json();
   } catch (error) {
