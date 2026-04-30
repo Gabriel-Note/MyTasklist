@@ -5,12 +5,10 @@ import TodoList from "./TodoList";
 import TodoListEdit from "./TodoListEdit";
 import { createTask, getTasksByListName } from "../../api/api_calls";
 import test from "node:test";
+import { ListName } from "../ListName";
 
 interface TodoClientProps {
-  selectedList: {
-    id: number;
-    name: string;
-  };
+  selectedList: ListName | null;
 }
 
 interface Todo {
