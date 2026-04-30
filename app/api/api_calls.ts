@@ -2,7 +2,7 @@
 
 interface Task {
   id: number;
-  description?: string;
+  description: string;
 }
 
 export async function createTask(task: string, listId: number) {

@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 import TodoList from "./TodoList";
 import TodoListEdit from "./TodoListEdit";
 import { createTask, getTasksByListName } from "../../api/api_calls";
-import test from "node:test";
 import { ListName } from "../ListName";
 
+
 interface TodoClientProps {
-  selectedList: ListName | null;
+  selectedList: typeof ListName | null;
 }
 
 interface Todo {

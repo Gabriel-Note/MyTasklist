@@ -19,7 +19,7 @@ interface Props {
 
 export { type ListName };
 
-export default function ListNameSidebar({ selectedListName, setSelectedListName }: Props) {
+export default function ListName({ selectedListName, setSelectedListName }: Props) {
   const [ListName, setListName] = useState<ListName[]>([]);
   const [newListName, setNewListName] = useState("");
 
@@ -38,14 +38,14 @@ export default function ListNameSidebar({ selectedListName, setSelectedListName 
     fetchListNames();
   }, []);
 
-  const handleCreateCategory = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleCreateListName = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await createListName(newListName);
     setNewListName("");
     fetchListNames(true);
   };
 
-  const handleDeleteCategory = async (id: number) => {
+  const handleDeleteListName = async (id: number) => {
     await deleteListName(id);
     setSelectedListName(null);
     fetchListNames();
@@ -56,7 +56,7 @@ export default function ListNameSidebar({ selectedListName, setSelectedListName 
       <h2 className="text-xl font-bold mb-4 text-black">Categories</h2>
 
       {/* Create category */}
-      <form onSubmit={handleCreateCategory} className="mb-4 flex gap-2">
+      <form onSubmit={handleCreateListName} className="mb-4 flex gap-2">
         <input
           type="text"
           placeholder="New category"
@@ -70,7 +70,7 @@ export default function ListNameSidebar({ selectedListName, setSelectedListName 
         </button>
       </form>
 
-      {/* Categories */}
+      {/* ListNames */}
       <div className="flex flex-col gap-2">
         {ListName.map((listName) => (
           <div key={listName.id} className="flex gap-1">
@@ -86,7 +86,7 @@ export default function ListNameSidebar({ selectedListName, setSelectedListName 
             </button>
 
             <button
-              onClick={() => handleDeleteCategory(listName.id)}
+              onClick={() => handleDeleteListName(listName.id)}
               className="bg-red-500 text-white px-2 rounded"
             >
               ✕
