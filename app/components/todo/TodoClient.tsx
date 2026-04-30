@@ -49,20 +49,20 @@ export default function TodoClient({ selectedList }: TodoClientProps) {
   }
 
   return (
-    <div className="flex-1 bg-white border p-6 rounded-xl shadow">
+    <div className="flex-1 w-full bg-white border p-6 rounded-xl shadow">
       <h2 className="text-2xl font-bold mb-4 text-black">
         {selectedList.name}
       </h2>
 
       {/* Add task */}
-      <form onSubmit={handleCreateTask} className="mb-4">
+      <form onSubmit={handleCreateTask} className="mb-4 ">
         <input
           type="text"
           placeholder="New task"
           value={task}
           onChange={(e) => setTask(e.target.value)}
           required
-          className="w-full px-3 py-2 border rounded text-black"
+          className=" w-full min-w-0 px-3 py-2 border rounded text-black"
         />
       </form>
 

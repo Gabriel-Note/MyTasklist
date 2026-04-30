@@ -2,22 +2,22 @@
 
 import { useState } from "react";
 import TodoClient from "../components/todo/TodoClient";
-import ListNameSidebar, { ListName } from "../components/ListName";
+import ListName from "../components/ListName";
 
-
-// export const metadata = {
-//   title: "My Lists - PRAG Todo App",
-// };
+interface ListName {
+  id: number;
+  name: string;
+}
 
 export default function MyListsPage() {
   const [selectedListName, setSelectedListName] = useState<ListName | null>(null);
 
   return (
-    <div className="flex flex-row gap-4 p-6">
+    <div className="flex flex-row gap-4 p-6  items-stretch">
       <div className="flex-[0.25]">
       
         {/* LEFT SIDE */}
-        <ListNameSidebar
+        <ListName
           selectedListName={selectedListName}
           setSelectedListName={setSelectedListName}
         />

@@ -53,30 +53,30 @@ export default function ListName({ selectedListName, setSelectedListName }: Prop
 
   return (
     <div className="w-75 bg-white border p-2 rounded-xl shadow">
-      <h2 className="text-xl font-bold mb-4 text-black">Categories</h2>
+      <h2 className="text-xl font-bold mb-4 text-black">Your Lists</h2>
 
-      {/* Create category */}
+      {/* Create ListName */}
       <form onSubmit={handleCreateListName} className="mb-4 flex gap-2">
         <input
           type="text"
-          placeholder="New category"
+          placeholder="New List"
           value={newListName}
           onChange={(e) => setNewListName(e.target.value)}
           required
           className="flex-1 px-2 py-1 border rounded text-black"
         />
-        <button className="bg-green-900 text-white px-3 py-1 rounded">
+        <button className="bg-green-900 text-white text-wrap px-3 py-1 rounded">
           +
         </button>
       </form>
 
       {/* ListNames */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 ">
         {ListName.map((listName) => (
-          <div key={listName.id} className="flex gap-1">
+          <div key={listName.id} className="flex gap-4 text-wrap">
             <button
               onClick={() => setSelectedListName(listName)}
-              className={`flex-1 px-2 py-1 rounded text-white ${
+              className={`flex-1 min-w-0 px-3 py-1 rounded text-white break-words  ${
                 selectedListName?.id === listName.id
                   ? "bg-blue-800"
                   : "bg-blue-950"
