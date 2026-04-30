@@ -1,11 +1,13 @@
+"use client";
+
 import { useState } from "react";
-import TodoClient from "../todo/TodoClient";
+import TodoClient from "../components/todo/TodoClient";
 import ListNameSidebar, { ListName } from "../components/ListName";
 
 
-export const metadata = {
-  title: "My Lists - PRAG Todo App",
-};
+// export const metadata = {
+//   title: "My Lists - PRAG Todo App",
+// };
 
 export default function MyListsPage() {
   const [selectedListName, setSelectedListName] = useState<ListName | null>(null);
@@ -23,7 +25,7 @@ export default function MyListsPage() {
       <div className="flex-1">
 
         {/* RIGHT SIDE - under construction*/}
-        <TodoClient selectedListName={selectedListName} />
+        <TodoClient selectedList={selectedListName} />
 
       </div>
     </div>
