@@ -49,8 +49,8 @@ export default function TodoClient({ selectedList }: TodoClientProps) {
   }
 
   return (
-    <div className="flex-1 w-full bg-white border p-6 rounded-xl shadow">
-      <h2 className="text-2xl font-bold mb-4 text-black">
+    <div className="flex-1 min-w-0 bg-white border p-6 rounded-xl shadow">
+      <h2 className="text-2xl break-all font-bold mb-4 text-black">
         {selectedList.name}
       </h2>
 

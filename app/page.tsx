@@ -25,8 +25,8 @@ export default async function Home() {
         </div>
         </div>
 
-        <div className="flex container mx-20 p-10 gap-6 space-x-6">
-          <div className="flex bg-blue-700 p-6 rounded-lg shadow-md space-x-3.5">
+        <div className="flex container mx-20 p-10 gap-6 space-x-6 justify-center">
+          <div className="flex bg-blue-700 p-6 rounded-lg  shadow-md space-x-3.5">
 
             <h2 className="flex text-2xl font-extrabold ">Features</h2>
             <ul className="list-disc list-inside mt-2 font-bold">
