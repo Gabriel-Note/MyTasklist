@@ -1,22 +1,33 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Navbar() {
     const [mode, setMode] = useState("loggedOut")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
+    useEffect(() => {
+        const saved = localStorage.getItem("mode")
+        if (saved) setMode(saved)
+    }, [])
+
     function handleLogin() {
         if (username === "PRAG" && password === "PRAG") {
             setMode("loggedIn")
+            localStorage.setItem("mode", "loggedIn")
         } else {
             alert("Fel användarnamn eller lösenord!")
         }
     }
 
+    function handleLogout() {
+        setMode("loggedOut")
+        localStorage.removeItem("mode")
+    }
+
     return (
-        <nav className="w-full  bg-white h-16">
+        <nav className="w-full bg-white h-16">
             <div className="container mx-auto h-full flex items-center justify-between px-8">
                 <img src="/todo-logo.png" alt="logga" className="h-16" />
 
@@ -60,6 +71,12 @@ export default function Navbar() {
                         <a href="/my-lists" className="hover:underline">My Lists</a>
                         <a href="/reward" className="hover:underline">Rewards</a>
                         <a href="/contact" className="hover:underline">About</a>
+                        <button
+                            onClick={handleLogout}
+                            className="bg-black text-white px-4 py-2 rounded-md"
+                        >
+                            Logga ut
+                        </button>
                     </div>
                 )}
 
