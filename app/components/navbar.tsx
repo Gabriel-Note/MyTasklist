@@ -70,7 +70,7 @@ export default function Navbar() {
                         <a href="/" className="hover:underline">Home</a>
                         <a href="/my-lists" className="hover:underline">My Lists</a>
                         <a href="/reward" className="hover:underline">Rewards</a>
-                        <a href="/contact" className="hover:underline">About</a>
+                        <a href="/contact" className="hover:underline">Contact</a>
                         <button
                             onClick={handleLogout}
                             className="bg-black text-white px-4 py-2 rounded-md"
