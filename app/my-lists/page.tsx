@@ -13,7 +13,7 @@ export default function MyListsPage() {
   const [selectedListName, setSelectedListName] = useState<ListName | null>(null);
 
   return (
-    <div className="flex flex-row gap-4 p-6  items-stretch">
+    <div className="flex flex-row gap-12 p-6 px-12  items-stretch">
       <div className="flex-[0.25]">
       
         {/* LEFT SIDE */}

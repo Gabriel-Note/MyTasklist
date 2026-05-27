@@ -24,7 +24,7 @@ export default function TodoList({ todoListData, fetchTodos }: TodoListProps) {
       {todoListData && todoListData.map((todo) => (
         <div
           key={todo.id}
-          className="flex relative p-2 border rounded-lg gap-x-4 bg-gray-50 hover:bg-gray-300 transition-colors "
+          className="flex relative p-2 border rounded-lg gap-x-4 bg-white hover:bg-gray-300 transition-colors "
           onClick={() => handleChangeCompleted(todo)}
         >
           <div className="absolute left-2 top-1/2 -translate-y-1/2"

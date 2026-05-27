@@ -52,8 +52,8 @@ export default function ListName({ selectedListName, setSelectedListName }: Prop
   };
 
   return (
-    <div className="w-75 bg-white border p-2 rounded-xl shadow">
-      <h2 className="text-xl font-bold mb-4 text-black">Your Lists</h2>
+    <div className="w-75 bg-sage border p-2 rounded-xl shadow">
+      <h2 className="text-xl font-bold mb-4 text-white text-center">Your Lists</h2>
 
       {/* Create ListName */}
       <form onSubmit={handleCreateListName} className="mb-4 flex gap-2">
@@ -63,9 +63,9 @@ export default function ListName({ selectedListName, setSelectedListName }: Prop
           value={newListName}
           onChange={(e) => setNewListName(e.target.value)}
           required
-          className="flex-1 px-2 py-1 border rounded text-black"
+          className="flex-1 px-2 py-1 bg-white border rounded text-black"
         />
-        <button className="bg-green-900 text-white text-wrap px-3 py-1 rounded">
+        <button className="bg-softsage text-white text-wrap px-3 py-1 rounded">
           +
         </button>
       </form>
@@ -78,8 +78,8 @@ export default function ListName({ selectedListName, setSelectedListName }: Prop
               onClick={() => setSelectedListName(listName)}
               className={`flex-1 min-w-0 px-3 py-1 rounded text-white break-words  ${
                 selectedListName?.id === listName.id
-                  ? "bg-blue-800"
-                  : "bg-blue-950"
+                  ? "bg-dustyrose"
+                  : "bg-rusty"
               }`}
             >
               {listName.name}
@@ -87,7 +87,7 @@ export default function ListName({ selectedListName, setSelectedListName }: Prop
 
             <button
               onClick={() => handleDeleteListName(listName.id)}
-              className="bg-red-500 text-white px-2 rounded"
+              className="bg-misty text-white px-2 rounded"
             >
               ✕
             </button>

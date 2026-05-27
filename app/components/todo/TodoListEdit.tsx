@@ -112,7 +112,7 @@ export default function TodoList({ todoListData, fetchTodos }: TodoListProps) {
             <div className="absolute right-2 top-1/2 -translate-y-1/2">
               <button
                 onClick={() => handleDelete(todo)}
-                className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600"
+                className="px-3 py-1 bg-misty text-white text-sm border rounded hover:bg-red-600"
               >
                 Delete
               </button>

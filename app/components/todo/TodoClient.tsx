@@ -49,8 +49,8 @@ export default function TodoClient({ selectedList }: TodoClientProps) {
   }
 
   return (
-    <div className="flex-1 min-w-0 bg-white border p-6 rounded-xl shadow">
-      <h2 className="text-2xl break-all font-bold mb-4 text-black">
+    <div className="flex-1 min-w-0 bg-sage border p-6 rounded-xl shadow">
+      <h2 className="text-2xl break-all font-bold mb-4 text-blueline">
         {selectedList.name}
       </h2>
 
@@ -62,20 +62,20 @@ export default function TodoClient({ selectedList }: TodoClientProps) {
           value={task}
           onChange={(e) => setTask(e.target.value)}
           required
-          className=" w-full min-w-0 px-3 py-2 border rounded text-black"
+          className=" w-full min-w-0 px-3 py-2 bg-white border rounded text-black"
         />
       </form>
 
       {/* Toggle edit */}
       <button
         onClick={() => setEditTodos((e) => !e)}
-        className="mb-4 bg-black text-white px-4 py-2 rounded"
+        className="mb-4 bg-misty text-white px-4 py-2 rounded"
       >
         {editTodos ? "Edit" : "Stop editing"}
       </button>
 
       {/* Tasks */}
-      <div className="bg-blue-800 p-4 rounded">
+      <div className="bg-softsage p-4 rounded">
         {editTodos ? (
           <TodoList
             todoListData={todos}

@@ -1,21 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #060141;
-  --foreground: #171717;
+  --background: #ffffff;
+  --foreground: #9d7982;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-sage: #9cb2a5;
+  --color-misty: #8ba4b3;
+  --color-sandy: #e3dbd3;
+  --color-rusty: #9d7982;
+  --color-roses: #c9a9b5;
+  --color-softsage: #b9c8bf;
+  --color-dustyrose: #b29ca9;
+  --color-blueline: #36597b;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #060141;
-    --foreground: #1a1e35;
+    --background: #ffffff;
+    --foreground: #36597b;
   }
 }
 
@@ -23,4 +31,46 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  border-color: #36597b;
+}
+
+@property --nav-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes nav-border-spin {
+  to { --nav-angle: 360deg; }
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--nav-angle), transparent 0%, #9cb2a5 15%, transparent 30%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+  animation: nav-border-spin 2s linear infinite;
 }

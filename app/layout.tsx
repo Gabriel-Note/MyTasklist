@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import { Main } from "next/document";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen relative">
+        <Image src="/flowers.png" alt="" width={600} height={600} className="fixed -top-30 -right-30 -z-10 -rotate-90" />
+        <Image src="/flowers.png" alt="" width={600} height={600} className="fixed -bottom-30 -left-20 -z-10" />
         <Navbar />
         <main className="flex flex-col flex-1">
         {children}

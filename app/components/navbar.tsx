@@ -34,7 +34,7 @@ export default function Navbar() {
                 {mode === "loggedOut" && (
                     <button
                         onClick={() => setMode("loggingIn")}
-                        className="bg-black text-white px-4 py-2 rounded-md"
+                        className="bg-misty text-white px-4 py-2 rounded-md"
                     >
                         Login
                     </button>
@@ -58,7 +58,7 @@ export default function Navbar() {
                         />
                         <button
                             onClick={handleLogin}
-                            className="bg-black text-white px-4 py-2 rounded-md"
+                            className="bg-misty text-white px-4 py-2 rounded-md"
                         >
                             Logga in
                         </button>
@@ -67,13 +67,13 @@ export default function Navbar() {
 
                 {mode === "loggedIn" && (
                     <div className="flex gap-6 items-center">
-                        <a href="/" className="hover:underline">Home</a>
-                        <a href="/my-lists" className="hover:underline">My Lists</a>
-                        <a href="/reward" className="hover:underline">Rewards</a>
-                        <a href="/contact" className="hover:underline">Contact</a>
+                        <a href="/" className="nav-link">Home</a>
+                        <a href="/my-lists" className="nav-link">My Lists</a>
+                        <a href="/reward" className="nav-link">Rewards</a>
+                        <a href="/contact" className="nav-link">Contact</a>
                         <button
                             onClick={handleLogout}
-                            className="bg-black text-white px-4 py-2 rounded-md"
+                            className="bg-misty text-white px-4 py-2 rounded-md"
                         >
                             Logga ut
                         </button>

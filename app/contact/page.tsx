@@ -16,7 +16,7 @@ export default async function ContactPage() {
             Or try our special kind of contact form below, which is guaranteed to <u className="text-emerald-800">maybe</u> work!
           </p>
       </div>
-    <div className="flex flex-col lg:flex-row break-words border p-6 rounded-xl shadow">
+    <div className="flex flex-col lg:flex-row break-words m-10">
       <div className="flex border p-2  bg-fuchsia-700 text-yellow-300 m-4">
         <p>If you want to reach <u className="underline font-extrabold">P</u>G, you can whip out some really tasty food and see if he can smell it.
         If that doesnt help, you can always try to have some fun and he will come running since he likes to laugh!</p>
